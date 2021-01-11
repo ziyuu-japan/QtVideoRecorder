@@ -37,6 +37,7 @@ private:
     QGraphicsView *camera_viewer_;
     QGraphicsScene *graphics_scene_;
     QPushButton *create_time_lapse_button_;
+    QGraphicsPixmapItem* graphics_pixmap_item_;
 
     QThread *thread_;
 

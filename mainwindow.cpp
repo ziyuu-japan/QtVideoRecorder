@@ -34,6 +34,8 @@ void MainWindow::initializeCentralWidget()
     start_camera_button_ = new QPushButton("Start Camera");
     camera_viewer_ = new QGraphicsView();
     graphics_scene_ = new QGraphicsScene();
+    graphics_pixmap_item_ = new QGraphicsPixmapItem();
+    graphics_scene_->addItem(graphics_pixmap_item_);
     camera_viewer_->setScene(graphics_scene_);
     create_time_lapse_button_ = new QPushButton("Create Time Lapse");
     connect(create_time_lapse_button_, &QPushButton::clicked,
@@ -125,7 +127,7 @@ QImage MainWindow::getCameraQImage() {
 void MainWindow::onQImageSubscribed(QImage qimage)
 {
     qDebug() << "onQImageSubscribed() called.";
-    graphics_scene_->addItem(new QGraphicsPixmapItem(QPixmap::fromImage(qimage)));
+  graphics_pixmap_item_->setPixmap(QPixmap::fromImage(qimage));
 }
 
 void MainWindow::onCreateTimelapseButtonClicked(){
